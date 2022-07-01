@@ -1,5 +1,9 @@
 # README
 
+30期の城井です
+チーム開発初めてなので、ドキドキしてます（主にGit周り）
+楽しみましょー！！
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
