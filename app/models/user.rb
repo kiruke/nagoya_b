@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  has_many :comments, dependent: :destroy
 
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
@@ -8,6 +9,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   validates :email, uniqueness: true
+
 
   def like(post)
     like_posts << post
@@ -19,6 +21,12 @@ class User < ApplicationRecord
 
   def like?(post)
     like_posts.include?(post)
+  end
+
+
+  
+  def own?(object)
+    id == object.user_id
   end
 
 end

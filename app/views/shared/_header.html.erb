@@ -1,12 +1,30 @@
 <header>
-  <div id="nav">
-    <% if current_user %>
-      <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-      <%= link_to "likes", likes_posts_path, class: 'nav-link' %>
-      <%= link_to "Logout", :logout, method: :post %>
-    <% else %>
-      <%= link_to "Register", new_user_path %> |
-      <%= link_to "Login", :login %>
-    <% end %>
-  </div>
+
+  <nav class='navbar navbar-expand-lg navigation navbar-light bg-light'>
+    <%= 'ズボラご飯' %>
+    <button class='navbar-toggler' data-toggle='collapse' data-target='#navbarSupportedContent'
+      aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+      <span class='navbar-toggler-icon'></span>
+    </button>
+
+    <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+      <ul class='navbar-nav ml-auto main-nav align-items-center'>
+        <li class='nav-item dropdown dropdown-slide'>
+          <%= link_to 'レシピ一覧', posts_path, class: "dropdown-item" %>
+          <%= link_to 'レシピ投稿', new_post_path, class: "dropdown-item" %>
+           <%= link_to "likes", likes_posts_path, class: 'nav-link' %>
+        </li>
+        <li class='nav-item dropdown dropdown-slide'>
+          <% if current_user %>
+            <%= link_to 'プロフィール', users_path, class: 'dropdown-item' %>
+            <%= link_to 'ログアウト', :logout, {method: :post, class: "dropdown-item"} %>
+          <% else %>
+            <%= link_to "ユーザー登録", new_user_path, class: 'dropdown-item' %>
+            <%= link_to "ログイン", :login, class: 'dropdown-item' %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>
+
