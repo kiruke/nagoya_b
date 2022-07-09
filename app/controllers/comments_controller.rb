@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
-  before_action :require_login
+
 
   # GET /comments or /comments.json
   # def index
@@ -22,8 +22,12 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = current_user.comments.build(comment_params)
-    @comment.save
+    comment = current_user.comments.build(comment_params)
+    if comment.save
+      redirect_to post_path(comment.post), success: 'コメントを登録しました'
+    else
+      redirect_to post_path(comment.post), danger: 'コメントの登録に失敗しました'
+    end
   end
 
   # PATCH/PUT /comments/1 or /comments/1.json
