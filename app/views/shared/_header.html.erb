@@ -1,4 +1,5 @@
 <header>
+
   <nav class='navbar navbar-expand-lg navigation navbar-light bg-light'>
     <%= 'ズボラご飯' %>
     <button class='navbar-toggler' data-toggle='collapse' data-target='#navbarSupportedContent'
@@ -11,6 +12,7 @@
         <li class='nav-item dropdown dropdown-slide'>
           <%= link_to 'レシピ一覧', posts_path, class: "dropdown-item" %>
           <%= link_to 'レシピ投稿', new_post_path, class: "dropdown-item" %>
+           <%= link_to "likes", likes_posts_path, class: 'nav-link' %>
         </li>
         <li class='nav-item dropdown dropdown-slide'>
           <% if current_user %>
@@ -25,3 +27,4 @@
     </div>
   </nav>
 </header>
+

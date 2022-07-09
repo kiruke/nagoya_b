@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   root :to => 'users#index'
   resources :like_posts
   resources :posts do
+    collection do
+      get :likes
+    end
     resources :comments, only: %i[create destroy], shallow: true
   end
   resources :users

@@ -6,11 +6,11 @@
                 <h4 class="card-title">
                     <%= link_to post.title, post_path(post) %>
                 </h4>
-                <%# if current_user.own?(post) %>
-                    <%#= render 'crud_menus', board: board %>
-                <%# else %>
-                    <%#= render 'boards/bookmark_button', board: board %>
-                <%# end %>
+                <% if current_user.own?(post) %>
+                    <%= render 'crud_menus', post: post %>
+                <% else %>
+                    <%= render 'like_button', post: post %>
+                <% end %>
                 <ul class="list-inline">
                     <%= post.user_id %></li>
                     <%= l post.created_at, format: :long %></li>
